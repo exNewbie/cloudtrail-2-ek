@@ -1,0 +1,12 @@
+#!/bin/bash
+if [ "$1" == "" ] ; then
+  echo "please provide a name for ES container to link to"
+  echo "syntax: $0 [elasticsearch container]"
+  exit 0
+fi
+
+docker run --name kibana-v6 --restart unless-stopped \
+--link $1:elasticsearch \
+-v "`pwd`/kibana-v6.yml":/usr/share/kibana/config/kibana.yml \
+-p 5601:5601 -d docker.elastic.co/kibana/kibana-oss:6.3.0 \
+/bin/bash -c '/usr/local/bin/kibana-docker'

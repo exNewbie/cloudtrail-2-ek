@@ -1,4 +1,4 @@
-# cloudtrail-2-elk
+# cloudtrail-2-ek
 Download Cloud Trail logs to your local computer and import them to your local Elastic Search + Kibana
 
 ```

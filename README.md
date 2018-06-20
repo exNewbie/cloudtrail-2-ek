@@ -38,4 +38,17 @@ CONTAINER ID        IMAGE                                                     CO
 f706860bb712        python:latest                                             "/bin/bash -c 'pip i…"   7 seconds ago        Up 6 seconds                                             cloudtrail-2-elk
 6119e15c0cfe        docker.elastic.co/kibana/kibana-oss:6.3.0                 "/bin/bash -c /usr/l…"   About a minute ago   Up About a minute               0.0.0.0:5601->5601/tcp   kibana-v6
 bf50378fb1ca        docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.0   "/usr/local/bin/dock…"   About a minute ago   Restarting (1) 24 seconds ago                            elasticsearch-v6
+
+
+:/tmp/cloudtrail-2-elk/3-python-import$ docker logs cloudtrail-2-elk
+Collecting elasticsearch
+  Downloading https://files.pythonhosted.org/packages/c3/e3/146b675e6d0138a49c4b817b4e68170eb9b75cee7e71fa3ec69624c4f467/elasticsearch-6.2.0-py2.py3-none-any.whl (69kB)
+Collecting urllib3<1.23,>=1.21.1 (from elasticsearch)
+  Downloading https://files.pythonhosted.org/packages/63/cb/6965947c13a94236f6d4b8223e21beb4d576dc72e8130bd7880f600839b8/urllib3-1.22-py2.py3-none-any.whl (132kB)
+Installing collected packages: urllib3, elasticsearch
+Successfully installed elasticsearch-6.2.0 urllib3-1.22
+Processing filename /mnt/365000009351_CloudTrail_ap-southeast-2_20180607T2045Z_JpI2IFxxxxxeTLM.json.gz
+Work finished
+
 ```
+

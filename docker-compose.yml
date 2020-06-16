@@ -41,7 +41,7 @@ services:
       - cloudtrail-2-ek
     volumes:
       - type: bind
-        source: $PWD/3-python-import/import.py
+        source: $PWD/python-import/import.py
         target: /bin/import.py
       - type: bind
         source: $PWD/logs

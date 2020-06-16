@@ -52,9 +52,19 @@ Creating cloudtrail2ek_worker_1        ... done
 ```
 
 ### Wait 1-3 minutes for Kibana to be ready
+Browse Kibana at `http://localhost:5601`
 
+![Kibana](https://github.com/exNewbie/cloudtrail-2-ek/blob/feature/docker-compose/images/kibana.png)
 
-### Add indexes to Kibana
+### Create an index pattern to Kibana
+Go to Index management at `http://localhost:5601/app/kibana#/management/kibana/index_pattern`
+
+![Index Pattern](https://github.com/exNewbie/cloudtrail-2-ek/blob/feature/docker-compose/images/create-index-pattern.png)
+
+![Time Filter](https://github.com/exNewbie/cloudtrail-2-ek/blob/feature/docker-compose/images/choose-time-filter.png)
 
 
 ### Enjoy the beauty of log files
+Browse logs at `http://localhost:5601/app/kibana#/discover`
+
+![Discovery](https://github.com/exNewbie/cloudtrail-2-ek/blob/feature/docker-compose/images/discovery.png)

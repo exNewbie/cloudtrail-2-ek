@@ -1,0 +1,55 @@
+version: "3.2"
+
+services:
+  # Elastic Search container
+  elasticsearch:
+    image: "docker.elastic.co/elasticsearch/elasticsearch:7.7.1"
+    networks:
+      - cloudtrail-2-ek
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - "http.host=0.0.0.0"
+      - "transport.host=127.0.0.1"
+      - "ES_JAVA_OPTS=-Xms1g -Xmx2g"
+    volumes:
+      - type: bind
+        source: $PWD/data
+        target: /usr/share/elasticsearch/data
+
+  # Kibana container
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.7.1
+    links:
+      - "elasticsearch:elasticsearch"
+    depends_on:
+      - elasticsearch
+    networks:
+      cloudtrail-2-ek:
+    ports:
+      - "5601:5601"
+
+  worker:
+    image: python:latest
+    links:
+      - "elasticsearch:elasticsearch"
+    depends_on:
+      - elasticsearch
+      - kibana
+    networks:
+      - cloudtrail-2-ek
+    volumes:
+      - type: bind
+        source: $PWD/python-import/import.py
+        target: /bin/import.py
+      - type: bind
+        source: $PWD/logs
+        target: /mnt
+    command: >
+      bash -c "pip install elasticsearch 
+      && /bin/import.py"
+
+# Networks setup
+networks:
+  cloudtrail-2-ek:
